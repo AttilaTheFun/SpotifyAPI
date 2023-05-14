@@ -6,11 +6,7 @@ import NIOHTTP1
 import AsyncHTTPClient
 #endif
 
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-#endif
 
 #if canImport(FoundationNetworking)
 import FoundationNetworking

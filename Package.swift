@@ -21,9 +21,6 @@ let package = Package(
                 .product(name: "RegularExpressions", package: "RegularExpressions"),
                 .product(name: "Logging", package: "swift-log"),
                 .product(name: "Crypto", package: "swift-crypto"),
-                .product(name: "OpenCombine", package: "OpenCombine"),
-                .product(name: "OpenCombineDispatch", package: "OpenCombine"),
-                .product(name: "OpenCombineFoundation", package: "OpenCombine")
             ],
             exclude: ["README.md"]
         ),
@@ -50,11 +47,6 @@ var packageDependencies: [Package.Dependency] {
             name: "swift-log",
             url: "https://github.com/apple/swift-log.git",
             from: "1.4.0"
-        ),
-        .package(
-            name: "OpenCombine",
-            url: "https://github.com/AttilaTheFun/OpenCombine.git",
-            from: "0.12.1"
         ),
         .package(
             name: "swift-crypto",

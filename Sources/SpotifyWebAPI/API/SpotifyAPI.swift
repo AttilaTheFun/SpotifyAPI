@@ -1,12 +1,6 @@
 import Foundation
 import Logging
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 
 #if canImport(FoundationNetworking)
 import FoundationNetworking

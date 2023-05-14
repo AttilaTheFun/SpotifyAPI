@@ -4,13 +4,7 @@ import FoundationNetworking
 #endif
 import Logging
 
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 
 /**
  Communicates with a backend server that you setup in order to retrieve the

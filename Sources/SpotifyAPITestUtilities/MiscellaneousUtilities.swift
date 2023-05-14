@@ -1,12 +1,6 @@
 import Foundation
 
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 
 import XCTest
 @testable import SpotifyWebAPI
@@ -113,7 +107,6 @@ public extension URLSession {
         URLRequest
     ) -> AnyPublisher<(data: Data, response: HTTPURLResponse), Error> = { request in
         
-        #if canImport(Combine)
         return URLSession.shared.dataTaskPublisher(for: request)
             .mapError { $0 as Error }
             .map { data, response -> (data: Data, response: HTTPURLResponse) in
@@ -127,30 +120,6 @@ public extension URLSession {
                 return (data: data, response: httpURLResponse)
             }
             .eraseToAnyPublisher()
-        #else
-        // the OpenCombine implementation of `DataTaskPublisher` has
-        // some concurrency issues.
-        return Future<(data: Data, response: HTTPURLResponse), Error> { promise in
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let data = data, let response = response {
-                    guard let httpURLResponse = response as? HTTPURLResponse else {
-                        fatalError(
-                            "could not cast URLResponse to HTTPURLResponse:\n\(response)"
-                        )
-                    }
-//                    let dataString = String(data: data, encoding: .utf8) ?? "nil"
-//                    print("_defaultNetworkAdaptor: \(response.url!): \(dataString)")
-                    promise(.success((data: data, response: httpURLResponse)))
-                }
-                else {
-                    let error = error ?? URLError(.unknown)
-                    promise(.failure(error))
-                }
-            }
-            .resume()
-        }
-        .eraseToAnyPublisher()
-        #endif
 
     }
 

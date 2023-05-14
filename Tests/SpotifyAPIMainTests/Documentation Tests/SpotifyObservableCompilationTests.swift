@@ -1,4 +1,3 @@
-#if canImport(Combine)
 import Foundation
 import Combine
 import SpotifyWebAPI
@@ -239,4 +238,3 @@ final class Spotify: ObservableObject {
     
 }
 
-#endif

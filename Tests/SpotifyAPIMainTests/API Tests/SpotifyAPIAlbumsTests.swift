@@ -1,12 +1,6 @@
 import Foundation
 import XCTest
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 @testable import SpotifyWebAPI
 import SpotifyAPITestUtilities
 import SpotifyExampleContent
@@ -540,7 +534,6 @@ extension SpotifyAPIAlbumsTests {
 
     func theLongestAlbumTracksConcurrent() {
         
-        #if canImport(Combine)
 
         let internalQueue = DispatchQueue(
             label: "theLongestAlbumTracksConcurrent internal"
@@ -599,13 +592,10 @@ extension SpotifyAPIAlbumsTests {
         XCTAssertEqual(receivePage2Count, 1)
         XCTAssertEqual(receivePage3Count, 1)
         
-        #endif
-            
     }
     
     func theLongestAlbumTracksConcurrent2() {
         
-        #if canImport(Combine)
 
         let internalQueue = DispatchQueue(
             label: "theLongestAlbumTracksConcurrent2 internal"
@@ -663,13 +653,11 @@ extension SpotifyAPIAlbumsTests {
         XCTAssertEqual(receivePage1Count, 2)
         XCTAssertEqual(receivePage2Count, 1)
         
-        #endif
             
     }
     
     func theLongestAlbumTracksCollect() {
         
-        #if canImport(Combine)
 
         let queue = DispatchQueue(
             label: "theLongestAlbumTracksCollect"
@@ -720,7 +708,6 @@ extension SpotifyAPIAlbumsTests {
             XCTAssertEqual(receivedPages, 7)
         }
         
-        #endif
 
     }
     

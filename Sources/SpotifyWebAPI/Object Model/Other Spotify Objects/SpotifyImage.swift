@@ -1,13 +1,7 @@
 #if canImport(SwiftUI)
 import SwiftUI
 #endif
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 
 #if canImport(AppKit)
 import AppKit

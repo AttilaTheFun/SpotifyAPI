@@ -1,10 +1,4 @@
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 import Foundation
 
 #if canImport(FoundationNetworking)
@@ -59,8 +53,6 @@ public extension Publisher where Output: Paginated {
 
 public extension Publisher where Output: PagingObjectProtocol {
     
-    // Publishers.MergeMany is not implemented in OpenCombine yet :(
-    #if canImport(Combine)
     /**
      Retrieves additional pages of results from a paging object *concurrently*.
 
@@ -106,7 +98,6 @@ public extension Publisher where Output: PagingObjectProtocol {
             .eraseToAnyPublisher()
         
     }
-    #endif
 
     /**
      Collects the items from all the pages that are delivered by the upstream
@@ -191,10 +182,5 @@ public extension Error {
     
 }
 
-#if canImport(Combine)
 typealias ResultPublisher<Success, Failure: Error> =
     Result<Success, Failure>.Publisher
-#else
-typealias ResultPublisher<Success, Failure: Error> =
-    Result<Success, Failure>.OCombine.Publisher
-#endif

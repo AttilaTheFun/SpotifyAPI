@@ -1,11 +1,5 @@
 import Foundation
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 import Logging
 
 #if canImport(FoundationNetworking)
@@ -131,8 +125,6 @@ public extension SpotifyAPI {
         
     }
     
-    // Publishers.MergeMany is not implemented in OpenCombine yet :(
-    #if canImport(Combine)
     /**
      Retrieves additional pages of results from a paging object *concurrently*.
      
@@ -244,6 +236,5 @@ public extension SpotifyAPI {
             .eraseToAnyPublisher()
 
     }
-    #endif
     
 }
