@@ -3,13 +3,7 @@ import Foundation
 import FoundationNetworking
 #endif
 
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 
 /**
  A type that handles the process of requesting the authorization information and

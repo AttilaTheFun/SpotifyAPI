@@ -1,12 +1,6 @@
 import Foundation
 import XCTest
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 @testable import SpotifyWebAPI
 import SpotifyAPITestUtilities
 import SpotifyExampleContent
@@ -283,7 +277,6 @@ extension SpotifyAPIShowTests {
     
     func showEpisodesExtendPagesConcurrent() {
         
-        #if canImport(Combine)
 
         func receiveShowEpisodes(_ episodes: PagingObject<Episode>) {
             // the index of the last item in the page
@@ -339,7 +332,6 @@ extension SpotifyAPIShowTests {
         let expectedIndices = Set(0...3)
         XCTAssert(expectedIndices.isSubset(of: receivedPageIndices))
 
-        #endif
 
     }
 

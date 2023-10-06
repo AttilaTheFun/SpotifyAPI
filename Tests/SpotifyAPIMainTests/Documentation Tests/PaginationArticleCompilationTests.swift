@@ -1,11 +1,5 @@
 import Foundation
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 import SpotifyWebAPI
 
 
@@ -41,7 +35,6 @@ private func testArtistAlbums<AuthorizationManager: SpotifyAuthorizationManager>
 
 }
 
-#if canImport(Combine)
 
 private func testPlaylistItems<AuthorizationManager: SpotifyAuthorizationManager>(
     spotifyAPI: SpotifyAPI<AuthorizationManager>
@@ -99,8 +92,6 @@ private func testAlbumTracks<AuthorizationManager: SpotifyAuthorizationManager>(
         .store(in: &cancellables)
     
 }
-
-#endif
 
 private func testNextHref<AuthorizationManager: SpotifyScopeAuthorizationManager>(
     spotifyAPI: SpotifyAPI<AuthorizationManager>

@@ -1,12 +1,6 @@
 import Foundation
 import XCTest
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 @testable import SpotifyWebAPI
 import SpotifyAPITestUtilities
 import SpotifyExampleContent
@@ -359,7 +353,6 @@ extension SpotifyAPIArtistTests {
     /// is only a single page of results to return.
     func artistAlbumsExtendSinglePageConcurrent() {
         
-        #if canImport(Combine)
 
         var receivedPages = 0
 
@@ -390,7 +383,6 @@ extension SpotifyAPIArtistTests {
         self.wait(for: [expectation], timeout: 120)
         XCTAssertEqual(receivedPages, 1)
         
-        #endif
 
     }
 

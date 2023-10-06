@@ -1,12 +1,6 @@
 import Foundation
 import XCTest
-#if canImport(Combine)
 import Combine
-#else
-import OpenCombine
-import OpenCombineDispatch
-import OpenCombineFoundation
-#endif
 import SpotifyAPITestUtilities
 import SpotifyExampleContent
 @testable import SpotifyWebAPI
